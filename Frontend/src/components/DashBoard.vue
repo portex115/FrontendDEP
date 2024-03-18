@@ -159,7 +159,7 @@
   height: 90vh;
   width: 250px;
   padding: 25px 10px;
-  background: var(--Main-Background);
+  background: var(--Dash-Board);
 }
 .sidebar .image-text img{
   padding: 0;

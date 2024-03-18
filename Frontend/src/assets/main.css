@@ -43,6 +43,7 @@ input[type=number] {
 }
 
 :root {
+  --Dash-Board: #191919;
   --Main-Background: #212123;
   --Sistem-pay-active: #411C7B;
   --Btn-cart:#411C7B;
@@ -61,7 +62,8 @@ input[type=number] {
   --Stroke2:#7440C5;
 }
 body{
-  height: 100vh;
-  background:  var(--Rectangle7);
+  width: 1440px;
+  height: 100%;
+  background:  var(--Main-Background);
 
 }
