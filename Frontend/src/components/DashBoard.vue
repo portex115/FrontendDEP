@@ -167,7 +167,8 @@
   width: auto;
 }
 .sidebar .Best {
-display: flex;
+  padding-right: 80px;
+  display: flex;
   height: auto;
   width: auto;
 }
@@ -175,8 +176,8 @@ header {
   display: flex;
 }
 .image{
-  padding-left: 20px;
-  padding-right: 25px;
+  padding-left: 10px;
+  padding-right: 15px;
 }
 .menu-bar  img{
   width: auto;
@@ -186,8 +187,8 @@ header {
   display: flex;
   align-items: center;
   text-decoration: none;
-
 }
+
 .sidebar li{
   padding-top: 25px;
   list-style: none;
