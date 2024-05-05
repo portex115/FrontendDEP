@@ -1,11 +1,13 @@
 <template>
   <div class="overview">
+
     <h2>Наше оружие</h2>
     <div class="button-group">
       <button class="btn">Лучшее</button>
       <button class="btn">Дорогое</button>
       <button class="btn">Дешевое</button>
     </div>
+    <span class="cat">Каталог</span>
   </div>
   <div class="weapon-grid">
     <div v-for="(weapon, index) in weapons" :key="index" class="weapon-card">
@@ -13,11 +15,13 @@
       <h2 class="weapon-name">{{ weapon.name }}</h2>
       <p class="weapon-description">{{ weapon.description }}</p>
       <p class="weapon-price">{{ weapon.price }}</p>
-      <button class="add-to-cart" @click="addToCart(weapon)">
-        <img src="../../image/Heard.png" alt="" />
-        <img src="../../image/PlusAdd.png" alt="" />
-          Добавить в корзину
+      <div class="down-cart">
+      <img src="../../image/Heard.png" alt="" />
+      <img src="../../image/Add.png" alt="" />
+      <button class="add-to-cart"  @click="addToCart(weapon)" >
+        Добавить в корзину
       </button>
+      </div>
     </div>
   </div>
 </template>
@@ -75,7 +79,6 @@ export default {
           description: 'Gunpack',
           price: '5.67₽'
         },
-        // Добавьте остальные 7 оружий здесь
       ]
     }
   },
@@ -92,8 +95,10 @@ export default {
 .overview {
   display: flex;
   align-items: center;
-  padding-left: 290px;
-  margin-top: 20px;
+  justify-content: space-between;
+}
+.cat{
+  color: var(--Title-h2);
 }
 
 .overview h2 {
@@ -107,8 +112,8 @@ export default {
 }
 
 .button-group {
-  padding-left: 40px;
-  margin-top: 10px;
+  display: flex;
+  gap: 20px
 }
 
 .btn {
@@ -120,20 +125,17 @@ export default {
   border: solid 3px #5C656C;
   border-radius: 25px;
   cursor: pointer;
-  margin: 0 20px;
 }
 
 .btn:hover {
   background-color: var(--Button);
   color: white;
+  border: solid 3px var(--Button);
 }
 .weapon-grid {
-  padding-top: 50px;
-  padding-left: 290px;
   display: grid;
   grid-template-columns: repeat(4, 225px);
   gap: 25px;
-
 }
 
 .weapon-card {
@@ -173,8 +175,11 @@ export default {
   color: #ffffff;
   cursor: pointer;
 }
-.add-to-cart img{
-  padding-right:5px ;
-  color: var(--Stroke2);
+
+.down-cart{
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 </style>

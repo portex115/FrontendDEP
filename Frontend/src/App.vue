@@ -1,19 +1,22 @@
 <script setup>
-  import DashBoard from '@/components/DashBoard.vue'
-  import MainTop from '@/components/MainTop.vue'
-  import Slider from '@/components/Slider.vue'
-  import BlockRedux from '@/components/BlockRedux.vue'
-
-
+  import Footer from '@/components/Footer.vue'
 </script>
 
 <template>
-    <DashBoard/>
-    <MainTop/>
-    <Slider/>
-    <BlockRedux/>
+  <div class="container">
+    <router-view class="main" />
+  </div>
+  <Footer/>
 </template>
 
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
-
-
+.main {
+  margin-top: 25px;
+}
+</style>

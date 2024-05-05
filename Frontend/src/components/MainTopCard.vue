@@ -46,12 +46,8 @@ export default {
       <div class="menu-icons">
         <span @click="showModal" class="text_nickname" >Авторизация</span>
         <a href="#"><img src="../../image/Avatar.png" alt="#" /></a>
-        <router-link to="Favorites">
-        <img src="../../image/Like.png" alt="/Favorites"/>
-        </router-link>
-        <router-link to="Basket">
-        <img src="../../image/Cart.png" alt="/Basket" />
-        </router-link>
+        <img src="../../image/Like.png" alt="#" />
+        <img src="../../image/Cart.png" alt="#" />
       </div>
     </header>
   </nav>

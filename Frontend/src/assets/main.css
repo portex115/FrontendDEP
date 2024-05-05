@@ -60,9 +60,10 @@ input[type=number] {
   --Star:#F5BA21;
   --Stroke:#5C656C;
   --Stroke2:#7440C5;
+  --Big-card:#9460E9;
+
 }
 body{
-  width: 1440px;
   height: 100%;
   background:  var(--Main-Background);
 
