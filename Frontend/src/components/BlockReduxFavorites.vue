@@ -1,3 +1,4 @@
+
 <template>
   <div class="overview-f">
     <h2>Избранное</h2>

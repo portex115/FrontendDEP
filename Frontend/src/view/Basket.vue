@@ -69,10 +69,7 @@ import DashBoard from '@/components/DashBoard.vue'
             <img src="../../image/Arrow-left.png" alt=""/>
             Вернуться в каталог </div>
         </router-link>
-        <router-link to="back_catalog">
-          <div class="back">
-            Всего:  499₽</div>
-        </router-link>
+          <div class="back">Всего:  499₽</div>
       </div>
 
   </div>
@@ -199,7 +196,6 @@ import DashBoard from '@/components/DashBoard.vue'
   color: var(--Title-h2);
   font-size: 14px;
   gap: 10px;
-
 }
 .button_back{
   display: flex;

@@ -39,25 +39,43 @@ export default {
 <template>
   <nav class="menu-top">
     <header>
-      <div class="search_main">
+        <div class="grid_icon">
+          <div class="search_main">
             <img src="../../image/Search.png" alt="#" />
             <input class="text_search" type="search"  placeholder="Найти...">
-      </div>
-      <div class="menu-icons">
-        <span @click="showModal" class="text_nickname" >Авторизация</span>
-        <router-link to="profile">
-          <a><img src="../../image/Avatar.png" alt="profile" /></a>
-        </router-link>
-        <img src="../../image/Like.png" alt="#" />
-        <img src="../../image/Cart.png" alt="#" />
-      </div>
+          </div>
+
+          <div class="menu-icons_gun">
+            <router-link to="profile">
+              <a><img src="../../image/Avatar.png" alt="profile" /></a>
+            </router-link>
+            <span @click="showModal" class="text_nickname" >Name</span>
+          </div>
+        </div>
+            <div class="corz">
+              <div class="top_menu">
+                <router-link to="/">
+                <span class="top_icon">Главная</span>
+                </router-link>
+                <router-link to="/catalog">
+                <span class="top_icon">Каталог</span>
+                </router-link>  
+                <span class="top_icon">Инфо</span>
+                <span class="top_icon">Помощь</span>
+              </div>
+            <router-link to="Basket">
+              <img src="../../image/Cart.png" alt="/Basket" />
+            </router-link>
+            </div>
     </header>
   </nav>
   <Transition name="fade">
     <div  v-show="modal" class="modal">
       <div class="modal-content">
         <div class="modal-main">
-          <span @click="showModal">ЗАКРЫТЬ</span>
+          <span @click="showModal" class="cross-active">
+          <img src="../../image/Cross-active.png"/>
+          </span>
           <div class="login-box">
             <div class="text-log_container">
               <div class="text-log" :class="{'white' : !registration}" @click="switchLog">Вход</div>
@@ -99,6 +117,28 @@ export default {
 </template>
 
 <style>
+.top_menu{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.top_icon{
+  font-size: 20px;
+  color: #737A85;
+}
+.top_icon:hover{
+  color: white;
+}
+.corz{
+  padding-top: 10px;
+  display: flex;
+  gap: 20px;
+}
+.grid_icon{
+  display: grid;
+  justify-content: space-between;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s ease;
@@ -107,6 +147,10 @@ export default {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+.cross-active{
+  position: absolute;
+  padding: 20px 20px 0 0;
 }
 
 .white {
@@ -125,9 +169,10 @@ export default {
   gap: 10px;
 }
 .text-write{
-
+  color: white;
 }
 .text_search_log{
+  color: white;
   border: solid 3px #A6A6A6;
   border-radius: 25px;
   background: transparent;
@@ -135,7 +180,8 @@ export default {
   font-size: 14px;
   width: 255px;
   height: 35px;
-  }
+
+}
 
 .login-box{
   display: flex;
@@ -151,6 +197,7 @@ export default {
   gap: 10px;
 }
 .text-log{
+  color: #6F7579;
   font-size: 14px;
 }
 .modal {
@@ -207,7 +254,7 @@ header {
   display: flex;
   justify-content: space-between;
 }
-.search_main {
+.search_main{
   padding: 8px 10px 8px 10px;
   width: 370px;
   height: 40px;
@@ -226,10 +273,11 @@ header {
   height: auto;
   padding-right: 10px;
 }
-.menu-icons{
+.menu-icons_gun{
   display: flex;
   align-items: center;
   gap: 10px;
+  padding-top: 30px;
 }
 .text_nickname{
   font-size: 12px;

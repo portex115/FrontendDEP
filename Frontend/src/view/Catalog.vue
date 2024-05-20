@@ -1,5 +1,4 @@
 <script setup>
-
 import MainTop from '@/components/MainTop.vue'
 import BlockReduxCatalog from '@/components/BlockReduxCatalog.vue'
 import DashBoardIcons from '@/components/DashBoardIcons.vue'

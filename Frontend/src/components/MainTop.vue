@@ -17,6 +17,7 @@ export default {
       // useScrollLock(document.body, isLocked.value);
     };
 
+
     const switchReg = () => {
       registration.value = true
     }
@@ -32,7 +33,11 @@ export default {
       showModal,
       switchReg,
     };
-  },
+
+
+  }
+
+
 };
 </script>
 
@@ -45,9 +50,8 @@ export default {
       </div>
       <div class="menu-icons">
         <span @click="showModal" class="text_nickname" >Авторизация</span>
-        <a href="#"><img src="../../image/Avatar.png" alt="#" /></a>
-        <router-link to="Favorites">
-        <img src="../../image/Like.png" alt="/Favorites"/>
+        <router-link to="profile">
+        <a><img src="../../image/Avatar.png" alt="profile" /></a>
         </router-link>
         <router-link to="Basket">
         <img src="../../image/Cart.png" alt="/Basket" />
@@ -59,7 +63,9 @@ export default {
     <div  v-show="modal" class="modal">
       <div class="modal-content">
         <div class="modal-main">
-          <span @click="showModal">ЗАКРЫТЬ</span>
+          <span @click="showModal" class="cross-active">
+          <img src="../../image/Cross-active.png"/>
+          </span>
           <div class="login-box">
             <div class="text-log_container">
               <div class="text-log" :class="{'white' : !registration}" @click="switchLog">Вход</div>
@@ -85,7 +91,10 @@ export default {
                 <input class="text_search_log" type="search"  placeholder="Логин">
               </div>
               <div class="text-write_2">
-                <input class="text_search_log" type="search"  placeholder="Пароль">
+                <input class="text_search_log" type="search"  placeholder="Пароль"
+                required
+                       v-model="password"/>
+
               </div>
             </div>
             <div class="button-log">
@@ -110,7 +119,10 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
-
+.cross-active{
+  position: absolute;
+  padding: 20px 20px 0 0;
+}
 .white {
   color: white;
 }
@@ -127,9 +139,10 @@ export default {
   gap: 10px;
 }
 .text-write{
-
+ color: white;
 }
 .text_search_log{
+  color: white;
   border: solid 3px #A6A6A6;
   border-radius: 25px;
   background: transparent;
@@ -137,6 +150,7 @@ export default {
   font-size: 14px;
   width: 255px;
   height: 35px;
+
   }
 
 .login-box{
@@ -153,6 +167,7 @@ export default {
   gap: 10px;
 }
 .text-log{
+  color: #6F7579;
   font-size: 14px;
 }
 .modal {
@@ -231,7 +246,7 @@ header {
 .menu-icons{
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 .text_nickname{
   font-size: 12px;

@@ -60,11 +60,6 @@
   font-size: 24px;
   color: #fff;
 }
-
-.overview p {
-  font-size: 16px;
-  color: #fff;
-}
 .btn {
   background-color: transparent;
   font-size: 16px;

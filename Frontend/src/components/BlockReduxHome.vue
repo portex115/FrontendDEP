@@ -10,13 +10,12 @@
     <span class="cat">Каталог</span>
   </div>
   <div class="weapon-grid">
-    <div v-for="(weapon, index) in weapons" :key="index" class="weapon-card">
+    <div v-for="weapon in data" :key="weapon.id" class="weapon-card">
       <img :src="weapon.image" alt="" class="weapon-image">
-      <h2 class="weapon-name">{{ weapon.name }}</h2>
-      <p class="weapon-description">{{ weapon.description }}</p>
+      <h2 class="weapon-name">{{ weapon.title }}</h2>
+      <p class="weapon-description">{{ weapon.comment }}</p>
       <p class="weapon-price">{{ weapon.price }}</p>
       <div class="down-cart">
-      <img src="../../image/Heard.png" alt="" />
       <img src="../../image/Add.png" alt="" />
       <button class="add-to-cart"  @click="addToCart(weapon)" >
         Добавить в корзину
@@ -26,69 +25,32 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      weapons: [
-        {
-          image: 'image/GunCard.png',
-          name: 'Magic gun',
-          description: 'Gunpack',
-          price: '5.67₽'
-        },
-        {
-          image: 'image/GunCard.png',
-          name: 'Magic gun',
-          description: 'Gunpack',
-          price: '5.67₽'
-        },
-        {
-          image: 'image/GunCard.png',
-          name: 'Magic gun',
-          description: 'Gunpack',
-          price: '5.67₽'
-        },
-        {
-          image: 'image/GunCard.png',
-          name: 'Magic gun',
-          description: 'Gunpack',
-          price: '5.67₽'
-        },
-        {
-          image: 'image/GunCard.png',
-          name: 'Magic gun',
-          description: 'Gunpack',
-          price: '5.67₽'
-        },
-        {
-          image: 'image/GunCard.png',
-          name: 'Magic gun',
-          description: 'Gunpack',
-          price: '5.67₽'
-        },
-        {
-          image: 'image/GunCard.png',
-          name: 'Magic gun',
-          description: 'Gunpack',
-          price: '5.67₽'
-        },
-        {
-          image: 'image/GunCard.png',
-          name: 'Magic gun',
-          description: 'Gunpack',
-          price: '5.67₽'
-        },
-      ]
-    }
-  },
-  methods: {
-    addToCart(weapon) {
-      // Здесь должен быть код для добавления оружия в корзину
-      console.log('Добавлено в корзину:', weapon.name);
-    }
+<script setup>
+import { ref } from 'vue'
+
+const data = ref()
+
+async function fetchProduct(){
+  try {
+    const res =  await fetch(import.meta.env.VITE_API_URL + "/api-mods/product", {
+      method: "GET",
+      headers: {
+        "ngrok-skip-browser-warning": "69420",
+      }
+    })
+    const response = await res.json()
+
+    data.value = response.data.slice(0, 8)
+  }
+  catch (err){
+    data.value = err
   }
 }
+function addToCart(weapon){
+  console.log(weapon)
+}
+fetchProduct()
+
 </script>
 
 <style scoped>
@@ -148,8 +110,10 @@ export default {
 }
 
 .weapon-image {
-  max-width: 100%;
-  height: auto;
+  object-fit: cover;
+  max-height: 95px;
+  width: 165px;
+  border-radius: 15px;
 }
 
 .weapon-name {
@@ -180,6 +144,7 @@ export default {
   width: 200px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 10px;
 }
 </style>

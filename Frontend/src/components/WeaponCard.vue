@@ -24,7 +24,9 @@ export default {
       <div class="down-cart">
         <img v-if="!pink" src="../../image/Arrow-krug.png" alt=""  />
         <img v-else src="../../image/Button_White.png" alt=""/>
+        <router-link to="Catalog">
         <button class="add-to-cart">Перейти к каталогу</button>
+        </router-link>
       </div>                          
     </div>
   </div>
@@ -50,6 +52,7 @@ export default {
 }
 .Opis{
   span{
+    font-size: 14px;
     color: var(--Title-h2);
   }
   display: flex;
@@ -64,19 +67,21 @@ export default {
 }
 
 .weapon-price {
-  font-size: 1.1em;
+  font-size: 20px;
+  font-weight: bold;
   color: var(--Button);
 
 }
 .weapon-name {
   color: var(--Title-h1);
-  font-size: 1.2em;
+  font-weight: bold;
+  font-size: 20px;
   margin: 10px 0;
 }
 .weapon-description {
   max-width: 250px;
   color: var(--Title-h2);
-  font-size: 0.9em;
+  font-size: 13px;
 }
 .add-to-cart {
   background-color: transparent;
@@ -96,6 +101,5 @@ export default {
 }
 .white{
   color: #ffffff !important;
-
 }
 </style>

@@ -18,8 +18,10 @@
     <header>
       <div class="image-text">
         <span class="image">
-          <img src="../../image/B.png" alt="logo"/>
-          <img src="../../image/S.png" alt=""/>
+          <router-link to="/">
+          <img src="../../image/B.png" alt="/"/>
+          <img src="../../image/S.png" alt="/"/>
+          </router-link>
         </span>
       </div>
       <div class="bestmods">
@@ -34,15 +36,9 @@
         <li class="nav-link">
           <a href="#">
           <img src="../../image/Profile-icon.png" alt="" />
+            <router-link to="profile">
           <span class="text nav-text">Профиль</span>
-          </a>
-        </li>
-        </ul>
-        <ul>
-        <li class="nav-link">
-          <a href="#">
-            <img src="../../image/Like.png" alt=""/>
-            <span class="text nav-text">Избранное</span>
+            </router-link>
           </a>
         </li>
         </ul>
@@ -50,7 +46,9 @@
         <li class="nav-link">
           <a href="#">
             <img src="../../image/Search.png" alt=""/>
+            <router-link to="gundes">
             <span class="text nav-text">Поиск</span>
+            </router-link>
           </a>
         </li>
         </ul>

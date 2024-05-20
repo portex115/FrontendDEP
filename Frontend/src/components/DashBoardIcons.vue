@@ -20,8 +20,10 @@
       <div class="header">
         <div class="image-text">
           <span class="image">
-            <img src="../../image/B.png" alt="logo"/>
-            <img src="../../image/S.png" alt=""/>
+            <router-link to="/">
+          <img src="../../image/B.png" alt="/"/>
+          <img src="../../image/S.png" alt="/"/>
+          </router-link>
           </span>
         </div>
       </div>
@@ -30,14 +32,9 @@
           <ul>
           <li class="nav-link">
             <a href="#">
+              <router-link to="profile">
             <img src="../../image/Profile-icon.png" alt="" />
-            </a>
-          </li>
-          </ul>
-          <ul>
-          <li class="nav-link">
-            <a href="#">
-              <img src="../../image/Like.png" alt=""/>
+              </router-link>
             </a>
           </li>
           </ul>
@@ -150,15 +147,7 @@
             <div class="cat_card_container">
               <div class="cat_card">
                 <div class="block_cat"></div>
-                <div class="text_cat">Новые</div>
-              </div>
-              <div class="cat_card">
-                <div class="block_cat"></div>
-                <div class="text_cat">Старые</div>
-              </div>
-              <div class="cat_card">
-                <div class="block_cat"></div>
-                <div class="text_cat">Скидка</div>
+                <div class="text_cat">Платные</div>
               </div>
               <div class="cat_card">
                 <div class="block_cat"></div>
@@ -167,43 +156,8 @@
             </div>
           </div>
         <div class="line_cat">____________________</div>
-          <div class="category">Год</div>
-          <div class="cat_card_container">
-            <div class="cat_card">
-              <div class="block_cat"></div>
-              <div class="text_cat">2024</div>
-            </div>
-            <div class="cat_card">
-              <div class="block_cat"></div>
-              <div class="text_cat">2023</div>
-            </div>
-            <div class="cat_card">
-              <div class="block_cat"></div>
-              <div class="text_cat">2022</div>
-            </div>
-            <div class="cat_card">
-              <div class="block_cat"></div>
-              <div class="text_cat">2021</div>
-            </div>
-            <div class="cat_card">
-              <div class="block_cat"></div>
-              <div class="text_cat">2020</div>
-            </div>
-            <div class="cat_card">
-              <div class="block_cat"></div>
-              <div class="text_cat">2019</div>
-            </div>
-            <div class="cat_card">
-              <div class="block_cat"></div>
-              <div class="text_cat">2018</div>
-            </div>
-            <div class="cat_card">
-              <div class="block_cat"></div>
-              <div class="text_cat">2017</div>
-            </div>
           </div>
       </div>
-  </div>
 </template>
 
 
@@ -256,12 +210,11 @@
   border-radius: 0 25px 25px 0  ;
 }
 .cat_card_container{
-  padding-bottom: 50px;
+  padding-bottom: 20px;
   padding-top: 20px;
   display: grid;
-  grid-template-columns: repeat(2, 100px);
   align-items: center;
-  justify-content: center;
+  padding-left: 50px;
 
 }
 .block_cat{
@@ -286,12 +239,6 @@
   color: var(--Button);
   padding-bottom: 50px;
 }
-
-
-
-
-
-
 .sidebar_icons_menu_container {
   display: flex;
 }

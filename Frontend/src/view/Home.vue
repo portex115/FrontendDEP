@@ -7,6 +7,8 @@ import SliderTwo from '@/components/SliderTwo.vue'
 import OurСloth from '@/components/OurСloth.vue'
 import DashBoard from '@/components/DashBoard.vue'
 
+
+
 </script>
 
 <template>
