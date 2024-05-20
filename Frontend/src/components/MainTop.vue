@@ -1,22 +1,34 @@
 <script>
-import { ref } from 'vue';
+import { ref } from 'vue'
 // import { useScrollLock } from '@vueuse/core';
+import { api } from '@/services/api/index.js'
+import { useCookies } from 'vue3-cookies'
+import router from '@/router/index.js'
 
 export default {
   setup() {
-    const modal = ref(false);
-    const isLocked = ref(false);
+    const { cookies } = useCookies()
+
+    const login = ref('')
+    const password = ref('')
+
+    const modal = ref(false)
+    const isLocked = ref(false)
 
     const registration = ref(false)
+    const isAuth = ref(!!cookies.isKey('auth_token'))
 
     const showModal = () => {
-      modal.value = !modal.value;
-      isLocked.value = !isLocked.value;
+      if (isAuth.value) {
+        return router.go('/profile')
+      }
+
+      modal.value = !modal.value
+      isLocked.value = !isLocked.value
 
       // Обновляем состояние блокировки скролла
       // useScrollLock(document.body, isLocked.value);
-    };
-
+    }
 
     const switchReg = () => {
       registration.value = true
@@ -26,45 +38,47 @@ export default {
       registration.value = false
     }
 
+    const loginRequest = async () => await api.auth.login({login: login.value, password: password.value})
+
     return {
+      isAuth,
+      login,
+      password,
       modal,
       registration,
       switchLog,
       showModal,
       switchReg,
-    };
-
-
+      loginRequest
+    }
   }
-
-
-};
+}
 </script>
 
 <template>
   <nav class="menu-top">
     <header>
       <div class="search_main">
-            <img src="../../image/Search.png" alt="#" />
-            <input class="text_search" type="search"  placeholder="Найти...">
+        <img src="../../image/Search.png" alt="#" />
+        <input class="text_search" type="search" placeholder="Найти...">
       </div>
       <div class="menu-icons">
-        <span @click="showModal" class="text_nickname" >Авторизация</span>
+        <span @click="showModal" class="text_nickname">{{ isAuth ? 'Профиль' : 'Авторизация' }}</span>
         <router-link to="profile">
-        <a><img src="../../image/Avatar.png" alt="profile" /></a>
+          <a><img src="../../image/Avatar.png" alt="profile" /></a>
         </router-link>
         <router-link to="Basket">
-        <img src="../../image/Cart.png" alt="/Basket" />
+          <img src="../../image/Cart.png" alt="/Basket" />
         </router-link>
       </div>
     </header>
   </nav>
   <Transition name="fade">
-    <div  v-show="modal" class="modal">
+    <div v-show="modal" class="modal">
       <div class="modal-content">
         <div class="modal-main">
           <span @click="showModal" class="cross-active">
-          <img src="../../image/Cross-active.png"/>
+          <img src="../../image/Cross-active.png" alt="active" />
           </span>
           <div class="login-box">
             <div class="text-log_container">
@@ -74,31 +88,31 @@ export default {
             </div>
             <div class="text-write_container" v-show="!registration">
               <div class="text-write">
-                <input class="text_search_log" type="search"  placeholder="Логин">
+                <input class="text_search_log" type="search" v-model="login" placeholder="Логин">
               </div>
               <div class="text-write_2">
-                <input class="text_search_log" type="search"  placeholder="Пароль">
+                <input class="text_search_log" type="search" v-model="password" placeholder="Пароль">
               </div>
             </div>
             <div class="text-write_container" v-show="registration">
               <div class="text-write">
-                <input class="text_search_log" type="search"  placeholder="Ник">
+                <input class="text_search_log" type="search" placeholder="Ник">
               </div>
               <div class="text-write_2">
-                <input class="text_search_log" type="search"  placeholder="Почта">
+                <input class="text_search_log" type="search" placeholder="Почта">
               </div>
               <div class="text-write">
-                <input class="text_search_log" type="search"  placeholder="Логин">
+                <input class="text_search_log" type="search" placeholder="Логин">
               </div>
               <div class="text-write_2">
-                <input class="text_search_log" type="search"  placeholder="Пароль"
-                required
-                       v-model="password"/>
+                <input class="text_search_log" type="search" placeholder="Пароль"
+                       required
+                       v-model="password" />
 
               </div>
             </div>
             <div class="button-log">
-              <button class="button">Войти</button>
+              <button class="button" @click="loginRequest">Войти</button>
               <button class="button">Регистрация</button>
             </div>
           </div>
@@ -119,29 +133,34 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
-.cross-active{
+
+.cross-active {
   position: absolute;
   padding: 20px 20px 0 0;
 }
+
 .white {
   color: white;
 }
 
-.button-log{
+.button-log {
   display: flex;
   width: 345px;
   gap: 5px;
 }
-.text-write_container{
+
+.text-write_container {
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 10px;
 }
-.text-write{
- color: white;
+
+.text-write {
+  color: white;
 }
-.text_search_log{
+
+.text_search_log {
   color: white;
   border: solid 3px #A6A6A6;
   border-radius: 25px;
@@ -151,9 +170,9 @@ export default {
   width: 255px;
   height: 35px;
 
-  }
+}
 
-.login-box{
+.login-box {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -162,14 +181,17 @@ export default {
   width: 100%;
   height: 100%;
 }
-.text-log_container{
+
+.text-log_container {
   display: flex;
   gap: 10px;
 }
-.text-log{
+
+.text-log {
   color: #6F7579;
   font-size: 14px;
 }
+
 .modal {
   z-index: 20;
   position: absolute;
@@ -198,6 +220,7 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .button {
   background-color: transparent;
   font-size: 16px;
@@ -208,12 +231,14 @@ export default {
   border-radius: 25px;
   cursor: pointer;
 }
+
 .button:hover {
   background-color: var(--Button);
   color: white;
   border: solid 3px var(--Button);
 }
-.slide-content__content{
+
+.slide-content__content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -224,6 +249,7 @@ header {
   display: flex;
   justify-content: space-between;
 }
+
 .search_main {
   padding: 8px 10px 8px 10px;
   width: 370px;
@@ -234,25 +260,30 @@ header {
   border-radius: 12.5px;
   background: var(--Rectangle7);
 }
-.search_main input{
+
+.search_main input {
   background: none;
   color: var(--Title-h1);
 }
+
 .search_main img {
   width: auto;
   height: auto;
   padding-right: 10px;
 }
-.menu-icons{
+
+.menu-icons {
   display: flex;
   align-items: center;
   gap: 20px;
 }
-.text_nickname{
+
+.text_nickname {
   font-size: 12px;
   color: white;
 }
-.menu-icons img{
+
+.menu-icons img {
   width: auto;
   height: auto;
 }
