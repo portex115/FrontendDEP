@@ -1,6 +1,12 @@
 <script setup>
 import MainTop from '@/components/MainTop.vue'
 import DashBoard from '@/components/DashBoard.vue'
+import { ref } from 'vue'
+import { api } from '@/services/api/index.js'
+
+const { profile: profileRequest } = api.auth
+let profile = ref({})
+profileRequest().then(data => profile.value = data)
 </script>
 
 <template>
@@ -13,20 +19,17 @@ import DashBoard from '@/components/DashBoard.vue'
         <div class="log-ava">
             <div class="text-write_container_profile">
               <div class="text-write">
-                <input class="text_search_log_ava" type="search"  placeholder="Ник">
+                <input class="text_search_log_ava" type="search" v-model="profile.name" placeholder="Ник">
               </div>
               <div class="text-write_2">
-                <input class="text_search_log_ava" type="search"  placeholder="Почта">
+                <input class="text_search_log_ava" type="search" v-model="profile.email" placeholder="Почта">
               </div>
               <div class="text-write">
-                <input class="text_search_log_ava" type="search"  placeholder="Логин">
-              </div>
-              <div class="text-write_2">
-                <input class="text_search_log_ava" type="search"  placeholder="Пароль">
+                <input class="text_search_log_ava" type="search" v-model="profile.login" placeholder="Логин">
               </div>
             </div>
             <div class="avatar">
-              <img src="../../image/Ava.png" height="222" width="222" />
+              <img :src="profile.image" height="222" width="222" />
             </div>
           </div>
           <div class="line-white">_________________________________________</div>

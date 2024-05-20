@@ -1,21 +1,21 @@
 <script>
-import { ref } from 'vue';
+import { ref } from 'vue'
 // import { useScrollLock } from '@vueuse/core';
 
 export default {
   setup() {
-    const modal = ref(false);
-    const isLocked = ref(false);
+    const modal = ref(false)
+    const isLocked = ref(false)
 
     const registration = ref(false)
 
     const showModal = () => {
-      modal.value = !modal.value;
-      isLocked.value = !isLocked.value;
+      modal.value = !modal.value
+      isLocked.value = !isLocked.value
 
       // Обновляем состояние блокировки скролла
       // useScrollLock(document.body, isLocked.value);
-    };
+    }
 
     const switchReg = () => {
       registration.value = true
@@ -30,51 +30,51 @@ export default {
       registration,
       switchLog,
       showModal,
-      switchReg,
-    };
-  },
-};
+      switchReg
+    }
+  }
+}
 </script>
 
 <template>
   <nav class="menu-top">
     <header>
-        <div class="grid_icon">
-          <div class="search_main">
-            <img src="../../image/Search.png" alt="#" />
-            <input class="text_search" type="search"  placeholder="Найти...">
-          </div>
-
-          <div class="menu-icons_gun">
-            <router-link to="profile">
-              <a><img src="../../image/Avatar.png" alt="profile" /></a>
-            </router-link>
-            <span @click="showModal" class="text_nickname" >Name</span>
-          </div>
+      <div class="grid_icon">
+        <div class="search_main">
+          <img src="../../image/Search.png" alt="#" />
+          <input class="text_search" type="search" placeholder="Найти...">
         </div>
-            <div class="corz">
-              <div class="top_menu">
-                <router-link to="/">
-                <span class="top_icon">Главная</span>
-                </router-link>
-                <router-link to="/catalog">
-                <span class="top_icon">Каталог</span>
-                </router-link>  
-                <span class="top_icon">Инфо</span>
-                <span class="top_icon">Помощь</span>
-              </div>
-            <router-link to="Basket">
-              <img src="../../image/Cart.png" alt="/Basket" />
-            </router-link>
-            </div>
+
+        <div class="menu-icons_gun">
+          <router-link to="profile">
+            <a><img src="../../image/Avatar.png" alt="profile" /></a>
+          </router-link>
+          <span @click="showModal" class="text_nickname">Name</span>
+        </div>
+      </div>
+      <div class="corz">
+        <div class="top_menu">
+          <router-link to="/">
+            <span class="top_icon">Главная</span>
+          </router-link>
+          <router-link to="Catalog">
+            <span class="top_icon">Каталог</span>
+          </router-link>
+          <span class="top_icon">Инфо</span>
+          <span class="top_icon">Помощь</span>
+        </div>
+        <router-link to="Basket">
+          <img src="../../image/Cart.png" alt="/Basket" />
+        </router-link>
+      </div>
     </header>
   </nav>
   <Transition name="fade">
-    <div  v-show="modal" class="modal">
+    <div v-show="modal" class="modal">
       <div class="modal-content">
         <div class="modal-main">
           <span @click="showModal" class="cross-active">
-          <img src="../../image/Cross-active.png"/>
+          <img src="../../image/Cross-active.png" />
           </span>
           <div class="login-box">
             <div class="text-log_container">
@@ -84,24 +84,24 @@ export default {
             </div>
             <div class="text-write_container" v-show="!registration">
               <div class="text-write">
-                <input class="text_search_log" type="search"  placeholder="Логин">
+                <input class="text_search_log" type="search" placeholder="Логин">
               </div>
               <div class="text-write_2">
-                <input class="text_search_log" type="search"  placeholder="Пароль">
+                <input class="text_search_log" type="search" placeholder="Пароль">
               </div>
             </div>
             <div class="text-write_container" v-show="registration">
               <div class="text-write">
-                <input class="text_search_log" type="search"  placeholder="Ник">
+                <input class="text_search_log" type="search" placeholder="Ник">
               </div>
               <div class="text-write_2">
-                <input class="text_search_log" type="search"  placeholder="Почта">
+                <input class="text_search_log" type="search" placeholder="Почта">
               </div>
               <div class="text-write">
-                <input class="text_search_log" type="search"  placeholder="Логин">
+                <input class="text_search_log" type="search" placeholder="Логин">
               </div>
               <div class="text-write_2">
-                <input class="text_search_log" type="search"  placeholder="Пароль">
+                <input class="text_search_log" type="search" placeholder="Пароль">
               </div>
             </div>
             <div class="button-log">
@@ -117,24 +117,28 @@ export default {
 </template>
 
 <style>
-.top_menu{
+.top_menu {
   display: flex;
   justify-content: center;
   gap: 20px;
 }
-.top_icon{
+
+.top_icon {
   font-size: 20px;
   color: #737A85;
 }
-.top_icon:hover{
+
+.top_icon:hover {
   color: white;
 }
-.corz{
+
+.corz {
   padding-top: 10px;
   display: flex;
   gap: 20px;
 }
-.grid_icon{
+
+.grid_icon {
   display: grid;
   justify-content: space-between;
 }
@@ -148,7 +152,8 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
-.cross-active{
+
+.cross-active {
   position: absolute;
   padding: 20px 20px 0 0;
 }
@@ -157,21 +162,24 @@ export default {
   color: white;
 }
 
-.button-log{
+.button-log {
   display: flex;
   width: 345px;
   gap: 5px;
 }
-.text-write_container{
+
+.text-write_container {
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 10px;
 }
-.text-write{
+
+.text-write {
   color: white;
 }
-.text_search_log{
+
+.text_search_log {
   color: white;
   border: solid 3px #A6A6A6;
   border-radius: 25px;
@@ -183,7 +191,7 @@ export default {
 
 }
 
-.login-box{
+.login-box {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -192,14 +200,17 @@ export default {
   width: 100%;
   height: 100%;
 }
-.text-log_container{
+
+.text-log_container {
   display: flex;
   gap: 10px;
 }
-.text-log{
+
+.text-log {
   color: #6F7579;
   font-size: 14px;
 }
+
 .modal {
   z-index: 20;
   position: absolute;
@@ -228,6 +239,7 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .button {
   background-color: transparent;
   font-size: 16px;
@@ -238,12 +250,14 @@ export default {
   border-radius: 25px;
   cursor: pointer;
 }
+
 .button:hover {
   background-color: var(--Button);
   color: white;
   border: solid 3px var(--Button);
 }
-.slide-content__content{
+
+.slide-content__content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -254,7 +268,8 @@ header {
   display: flex;
   justify-content: space-between;
 }
-.search_main{
+
+.search_main {
   padding: 8px 10px 8px 10px;
   width: 370px;
   height: 40px;
@@ -264,26 +279,31 @@ header {
   border-radius: 12.5px;
   background: var(--Rectangle7);
 }
-.search_main input{
+
+.search_main input {
   background: none;
   color: var(--Title-h1);
 }
+
 .search_main img {
   width: auto;
   height: auto;
   padding-right: 10px;
 }
-.menu-icons_gun{
+
+.menu-icons_gun {
   display: flex;
   align-items: center;
   gap: 10px;
   padding-top: 30px;
 }
-.text_nickname{
+
+.text_nickname {
   font-size: 12px;
   color: white;
 }
-.menu-icons img{
+
+.menu-icons img {
   width: auto;
   height: auto;
 }
