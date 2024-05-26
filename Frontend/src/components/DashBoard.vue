@@ -143,6 +143,7 @@ export default {
       </div>
     </div>
   </nav>
+
 </template>
 
 
@@ -226,6 +227,11 @@ export default {
   font-size: 18px;
   padding-left: 40px;
   color: var(--Title-h1);
+}
+@media (max-width: 767px){
+    .sidebar{
+      display: none;
+    }
 }
 
 </style>

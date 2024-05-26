@@ -26,10 +26,6 @@ import DashBoard from '@/components/DashBoard.vue'
         </div>
         <div class="in-payment-container">
           <div  class="in-payment">
-            <div class="row-line">
-            <input class="input_payment" type="number" placeholder="дд">
-            <div class="line-payment">______</div>
-            </div>
 
             <div class="row-line">
             <input class="input_payment" type="number" placeholder="мм">

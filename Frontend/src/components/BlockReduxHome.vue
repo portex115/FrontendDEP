@@ -1,17 +1,17 @@
 <template>
   <div class="overview">
-
+    <div class="nav-gun">
     <h2>Наше оружие</h2>
     <div class="button-group">
-      <button class="btn">Лучшее</button>
-      <button class="btn">Дорогое</button>
-      <button class="btn">Дешевое</button>
+      <button class="btn">Бесплатные</button>
+      <button class="btn">Платные</button>
+    </div>
     </div>
     <span class="cat">Каталог</span>
   </div>
   <div class="weapon-grid">
     <div v-for="weapon in data" :key="weapon.id" class="weapon-card">
-      <img :src="weapon.image" alt="" class="weapon-image">
+      <img :src="weapon.images" alt="" class="weapon-image">
       <h2 class="weapon-name">{{ weapon.title }}</h2>
       <p class="weapon-description">{{ weapon.comment }}</p>
       <p class="weapon-price">{{ weapon.price }}</p>
@@ -77,7 +77,11 @@ fetchProduct()
   display: flex;
   gap: 20px
 }
-
+.nav-gun{
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
 .btn {
   background-color: transparent;
   font-size: 16px;
@@ -147,4 +151,6 @@ fetchProduct()
   justify-content: center;
   gap: 10px;
 }
+
+
 </style>

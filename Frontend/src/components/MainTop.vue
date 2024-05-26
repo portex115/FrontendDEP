@@ -238,13 +238,6 @@ export default {
   border: solid 3px var(--Button);
 }
 
-.slide-content__content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 20px;
-}
-
 header {
   display: flex;
   justify-content: space-between;
@@ -269,18 +262,17 @@ header {
 .search_main img {
   width: auto;
   height: auto;
-  padding-right: 10px;
-}
-
-.menu-icons {
-  display: flex;
-  align-items: center;
-  gap: 20px;
 }
 
 .text_nickname {
   font-size: 12px;
   color: white;
+}
+
+.menu-icons{
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .menu-icons img {
